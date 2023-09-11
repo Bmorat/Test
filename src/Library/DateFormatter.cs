@@ -1,10 +1,15 @@
-﻿namespace Ucu.Poo.TestDateFormat;
+﻿using System.Globalization;
+
+namespace Ucu.Poo.TestDateFormat;
 
 /// <summary>
 /// Esta clase implementa la funcionalidad de cambiar el formato de una fecha.
 /// </summary>
 public class DateFormatter
 {
+    public DateFormatter()
+    {
+    }
 
     /// <summary>
     /// Cambia el formato de la fecha que se recibe como argumento. La fecha que se recibe como argumento se asume en
@@ -13,8 +18,46 @@ public class DateFormatter
     /// </summary>
     /// <param name="date">Una fecha en formato "dd/mm/yyyy".</param>
     /// <returns>La fecha convertida al formato "yyyy-mm-dd".</returns>
+
+
     public static string ChangeFormat(string date)
     {
-        return date.Substring(6) + "-" + date.Substring(3, 2) + "-" + date.Substring(0, 2);
+        if (date == "")
+        {
+            return "error";
+        }
+        string fecha=date.Substring(6, 4)+ "-" + date.Substring(3, 2)+ "-" +date.Substring(0, 2);
+        string num= date.Substring(3,2);
+        string num2= date.Substring(0,2);
+        int nums2 = int.Parse(num2);
+        int nums = int.Parse(num);
+
+
+        if (date == "")
+        {
+            return "error";
+        }
+        else
+        {
+            if (nums2 > 31)
+            {
+            return "error";
+            }
+            else
+            {
+            if (nums > 12)
+            {
+                return "error";
+            }
+            else
+            {
+            return date.Substring(6, 4)+ "-" + date.Substring(3, 2)+ "-" +date.Substring(0, 2);
+            }
+
+       
+        }
+        
+
     }
+   }
 }
